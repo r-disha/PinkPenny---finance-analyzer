@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | Pink Penny</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            position:relative;
+            background:linear-gradient(135deg,#fff8fb,#edceda,#e5a2c2);
+            min-height:100vh;
+        }
+
+        body::before{
+            content:"";
+            position:fixed;
+            inset:0;
+
+            background:url("/static/bg.png");
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+            z-index:-1;
+        }
+
+        .register-card{
+            width:450px;
+            background:white;
+            padding:45px;
+            border-radius:28px;
+            box-shadow:0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .logo{
+            text-align:center;
+            font-family:'Cormorant',serif;
+            font-size:42px;
+            color:#d66d95;
+            margin-bottom:10px;
+        }
+
+        .subtitle{
+            text-align:center;
+            font-family:'Raleway',sans-serif;
+            color:#6d6770;
+            margin-bottom:35px;
+        }
+
+        .input-group{
+            margin-bottom:18px;
+        }
+
+        .input-group label{
+            display:block;
+            margin-bottom:8px;
+            font-family:'Raleway',sans-serif;
+            color:#43364a;
+            font-weight:600;
+        }
+
+        .input-group input{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:12px;
+            background:#faf4f7;
+            font-family:'Raleway',sans-serif;
+            font-size:15px;
+        }
+
+        .input-group input:focus{
+            outline:2px solid #d66d95;
+        }
+
+        .btn{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:30px;
+            background:#d66d95;
+            color:white;
+            font-family:'Raleway',sans-serif;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+            margin-top:10px;
+        }
+
+        .btn:hover{
+            background:#c75c85;
+            transform:translateY(-2px);
+        }
+
+        .login-link{
+            text-align:center;
+            margin-top:25px;
+            font-family:'Raleway',sans-serif;
+            color:#6d6770;
+        }
+
+        .login-link a{
+            color:#d66d95;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .message{
+            text-align:center;
+            margin-top:15px;
+            color:#d66d95;
+            font-family:'Raleway',sans-serif;
+        }
+        .home-link{
+    margin-bottom:20px;
+}
+
+.home-link a{
+    text-decoration:none;
+    color:#d66d95;
+    font-family:'Raleway',sans-serif;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.home-link a:hover{
+    color:#c75c85;
+}
+    </style>
+</head>
+<body>
+
+    <div class="register-card">
+<div class="home-link">
+    <a href="/">← Home</a>
+</div>
+        <div class="logo">
+            Pink Penny ✦
+        </div>
+
+        <div class="subtitle">
+            Create your account and start managing your finances
+        </div>
+
+        <form method="POST">
+
+            <div class="input-group">
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Enter your full name"
+                    required>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required>
+            </div>
+
+            <button type="submit" class="btn">
+                Create Account
+            </button>
+
+        </form>
+
+        {% if message %}
+        <div class="message">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <div class="login-link">
+            Already have an account?
+            <a href="/user">Sign In</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

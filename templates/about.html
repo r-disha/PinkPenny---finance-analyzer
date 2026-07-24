@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Pink Penny</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            background:linear-gradient(100deg,#fff8fb,#edceda,#e5a2c2);
+            min-height:100vh;
+            color:#5a3d5c;
+        }
+
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 10%;
+            background:rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            border-bottom:1px solid rgba(232,154,182,0.15);
+        }
+
+        .logo{
+            font-family:'Cormorant', serif;
+            font-size:30px;
+            font-weight:700;
+            color:#d66d95;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:#5a3d5c;
+            margin-left:25px;
+            font-family:'Raleway', sans-serif;
+            font-weight:500;
+        }
+
+        .nav-links a:hover{
+            color:#d66d95;
+        }
+
+        .hero{
+            text-align:center;
+            padding:80px 10% 50px;
+        }
+
+        .hero h1{
+            font-family:'Cormorant', serif;
+            font-size:72px;
+            color:#43364a;
+            margin-bottom:20px;
+        }
+
+        .hero p{
+            max-width:800px;
+            margin:auto;
+            font-family:'Raleway', sans-serif;
+            font-size:18px;
+            line-height:1.8;
+            color:#6d6770;
+        }
+
+        .story{
+            padding:20px 10% 60px;
+        }
+
+        .story-card{
+            max-width:950px;
+            margin:auto;
+            background:white;
+            padding:40px;
+            border-radius: 25px;
+            box-shadow:0 20px 30px #b0a8a8;
+        }
+
+        .story-card h2{
+            font-family:'Cormorant', serif;
+            font-size:45px;
+            margin-bottom:20px;
+            color:#43364a;
+        }
+
+        .story-card p{
+            font-family:'Raleway', sans-serif;
+            line-height:1.9;
+            color:#6d6770;
+        }
+
+        .users{
+            padding:30px 10% 70px;
+            text-align:center;
+        }
+
+        .users h2{
+            font-family:'Cormorant', serif;
+            font-size:55px;
+            margin-bottom:40px;
+            color:#43364a;
+        }
+
+        .user-cards{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:25px;
+        }
+
+        .user-card{
+            width:300px;
+            background:white;
+            padding:30px;
+            border-radius:25px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.06);
+            transition:0.3s;
+        }
+
+        .user-card:hover{
+            transform:translateY(-6px);
+        }
+
+        .emoji{
+            font-size:42px;
+            margin-bottom:15px;
+        }
+
+        .user-card h3{
+            font-family:'Raleway', sans-serif;
+            margin-bottom:15px;
+            color:#43364a;
+        }
+
+        .user-card p{
+            font-family:'Raleway', sans-serif;
+            color:#6d6770;
+            line-height:1.7;
+        }
+
+        .journey{
+            padding:20px 10% 80px;
+            text-align:center;
+        }
+
+        .journey h2{
+            font-family:'Cormorant', serif;
+            font-size:55px;
+            margin-bottom:50px;
+            color:#43364a;
+        }
+
+        .steps{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:30px;
+        }
+
+        .step{
+            background:white;
+            width:250px;
+            padding:30px;
+            border-radius:25px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.06);
+        }
+
+        .step span{
+            display:inline-block;
+            width:60px;
+            height:60px;
+            line-height:60px;
+            border-radius:50%;
+            background:#f7d4e2;
+            color:#a04c70;
+            font-family:'Raleway', sans-serif;
+            font-size:22px;
+            font-weight:700;
+            margin-bottom:15px;
+        }
+
+        .step h3{
+            font-family:'Raleway', sans-serif;
+            color:#43364a;
+        }
+
+        footer{
+            text-align:center;
+            padding:25px;
+            font-family:'Raleway', sans-serif;
+            color:#5a3d5c;
+        }
+
+        @media(max-width:768px){
+
+            .hero h1{
+                font-size:50px;
+            }
+
+            .users h2,
+            .journey h2{
+                font-size:40px;
+            }
+
+            nav{
+                flex-direction:column;
+                gap:15px;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Pink Penny ✦</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/user">Login</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+
+        <h1>About Pink Penny</h1>
+
+        <p>
+            Pink Penny is a personal finance analyzer designed to help users
+            understand spending habits, manage expenses, and build smarter
+            financial routines through simple and meaningful insights.
+        </p>
+
+    </section>
+
+    <section class="story">
+
+        <div class="story-card">
+
+            <h2>Why Pink Penny?</h2>
+
+            <p>
+                Managing money can often feel overwhelming, especially when
+                expenses are scattered across different categories and daily
+                purchases go unnoticed. Pink Penny was created to make personal
+                finance simple, accessible, and visually engaging.
+                <br><br>
+                By transforming financial data into easy-to-understand insights,
+                Pink Penny helps users recognize spending patterns, improve
+                budgeting habits, and work towards meaningful savings goals.
+                The aim is not just to track money, but to help users build
+                confidence in their financial decisions.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="users">
+
+        <h2>Who Is It For?</h2>
+
+        <div class="user-cards">
+
+            <div class="user-card">
+                <div class="emoji">🎓</div>
+                <h3>Students</h3>
+                <p>
+                    Keep track of allowances, monthly spending, and savings
+                    while developing healthy financial habits.
+                </p>
+            </div>
+
+            <div class="user-card">
+                <div class="emoji">💼</div>
+                <h3>Young Professionals</h3>
+                <p>
+                    Understand spending trends, manage budgets, and make
+                    informed financial decisions.
+                </p>
+            </div>
+
+            <div class="user-card">
+                <div class="emoji">🌱</div>
+                <h3>Future Savers</h3>
+                <p>
+                    Build long-term financial discipline and achieve personal
+                    savings goals more effectively.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="journey">
+
+        <h2>How It Works</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <span>01</span>
+                <h3>Add Expenses</h3>
+            </div>
+
+            <div class="step">
+                <span>02</span>
+                <h3>Analyze Spending</h3>
+            </div>
+
+            <div class="step">
+                <span>03</span>
+                <h3>Track Progress</h3>
+            </div>
+
+            <div class="step">
+                <span>04</span>
+                <h3>Reach Goals</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        🌷 Pink Penny | Personal Finance Analyzer 💖
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance History | Pink Penny</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            min-height:100vh;
+            background:linear-gradient(135deg,#fff8fb,#edceda,#e5a2c2);
+        }
+
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 10%;
+            background:rgba(255,255,255,0.75);
+            backdrop-filter:blur(12px);
+        }
+        .nav-links a:hover{
+            color:#ff4d8d;
+        }
+
+        .logo{
+            font-family:'Cormorant',serif;
+            font-size:30px;
+            color:#d66d95;
+            font-weight:700;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:#5a3d5c;
+            margin-left:25px;
+            font-family:'Raleway',sans-serif;
+        }
+
+        .container{
+            width:90%;
+            max-width:1200px;
+            margin:40px auto;
+        }
+
+        .heading{
+            text-align:center;
+            margin-bottom:35px;
+        }
+
+        .heading h1{
+            font-family:'Cormorant',serif;
+            font-size:65px;
+            color:#43364a;
+        }
+
+        .heading p{
+            font-family:'Raleway',sans-serif;
+            color:#6d6770;
+            margin-top:10px;
+        }
+
+        .history-card{
+            background:white;
+            padding:30px;
+            border-radius:25px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.06);
+            overflow-x:auto;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            font-family:'Raleway',sans-serif;
+        }
+
+        th{
+            background:#d66d95;
+            color:white;
+            padding:15px;
+            text-align:center;
+        }
+
+        td{
+            padding:15px;
+            text-align:center;
+            border-bottom:1px solid #f0f0f0;
+        }
+
+        tr:hover{
+            background:#fff7fa;
+        }
+
+        .empty{
+            text-align:center;
+            font-family:'Raleway',sans-serif;
+            color:#777;
+            padding:30px;
+        }
+
+        footer{
+            text-align:center;
+            padding:30px;
+            margin-top:40px;
+            font-family:'Raleway',sans-serif;
+            color:#5a3d5c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+
+        <div class="logo">
+            Pink Penny ✦
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/finance">Finance</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/logout">Logout</a>
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <div class="heading">
+            <h1>Your Finance History</h1>
+            <p>View all your previous finance analyses.</p>
+        </div>
+
+        <div class="history-card">
+
+            {% if records %}
+
+            <table>
+
+                <tr>
+                    <th>Date</th>
+                    <th>Income</th>
+                    <th>Expenses</th>
+                    <th>Savings</th>
+                    <th>Savings Rate</th>
+                </tr>
+
+                {% for record in records %}
+
+                <tr>
+                    <td>{{ record.created_at }}</td>
+                    <td>₹{{ record.income }}</td>
+                    <td>₹{{ record.expenses }}</td>
+                    <td>₹{{ record.savings }}</td>
+                    <td>{{ record.savings_rate }}%</td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+            {% else %}
+
+            <div class="empty">
+                🌸 No finance records found yet. Analyze your finances to get started!
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <footer>
+        ✦ Pink Penny | Personal Finance Analyzer
+    </footer>
+
+</body>
+</html>

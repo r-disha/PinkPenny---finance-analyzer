@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finance Dashboard | Pink Penny</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            background:linear-gradient(135deg,#fff8fb,#edceda,#e5a2c2);
+            min-height:100vh;
+        }
+
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 10%;
+            background:rgba(255,255,255,0.75);
+            backdrop-filter:blur(12px);
+        }
+
+        .logo{
+            font-family:'Cormorant',serif;
+            font-size:30px;
+            color:#d66d95;
+            font-weight:700;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:#5a3d5c;
+            margin-left:25px;
+            font-family:'Raleway',sans-serif;
+            font-weight: 500;
+        }
+        .nav-links a:hover{
+            color:#ff4d8d;
+        }
+
+        .container{
+            width:90%;
+            max-width:1100px;
+            margin:40px auto;
+        }
+
+        .heading{
+            text-align:center;
+            margin-bottom:40px;
+        }
+
+        .heading h1{
+            font-family:'Cormorant',serif;
+            font-size:65px;
+            color:#43364a;
+        }
+
+        .heading p{
+            font-family:'Raleway',sans-serif;
+            color:#6d6770;
+            margin-top:10px;
+        }
+
+        .form-card{
+            background:white;
+            padding:35px;
+            border-radius:25px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.06);
+        }
+
+        .form-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+        }
+
+        .input-group{
+            display:flex;
+            flex-direction:column;
+        }
+
+        label{
+            margin-bottom:8px;
+            font-family:'Raleway',sans-serif;
+            color:#43364a;
+            font-weight:600;
+        }
+
+        input{
+            padding:12px;
+            border:none;
+            background:#faf4f7;
+            border-radius:12px;
+            font-family:'Raleway',sans-serif;
+            font-size:15px;
+        }
+
+        input:focus{
+            outline:2px solid #d66d95;
+        }
+
+        .btn{
+            display:block;
+            margin:30px auto 0;
+            padding:15px 35px;
+            border:none;
+            border-radius:30px;
+            background:#d66d95;
+            color:white;
+            cursor:pointer;
+            font-family:'Raleway',sans-serif;
+            font-size:17px;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#c75c85;
+            transform:translateY(-3px);
+        }
+
+        .results{
+            margin-top:40px;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+        }
+
+        .result-card{
+            background:white;
+            padding:25px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 10px 25px rgba(0,0,0,0.06);
+        }
+
+        .result-card h3{
+            font-family:'Raleway',sans-serif;
+            color:#666;
+            margin-bottom:10px;
+        }
+
+        .result-card p{
+            font-family:'Raleway',sans-serif;
+            font-size:28px;
+            font-weight:700;
+            color:#d66d95;
+        }
+
+        .insight{
+            margin-top:30px;
+            background:white;
+            padding:25px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 10px 25px rgba(0,0,0,0.06);
+        }
+
+        .insight h2{
+            font-family:'Cormorant',serif;
+            color:#43364a;
+            margin-bottom:10px;
+        }
+
+        .insight p{
+            font-family:'Raleway',sans-serif;
+            color:#6d6770;
+            line-height:1.8;
+        }
+        .popup{
+    position:fixed;
+    top:30px;
+    right:30px;
+    background:white;
+    color:#43364a;
+    padding:18px 25px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    font-family:'Raleway',sans-serif;
+    z-index:999;
+    animation:slideIn 0.6s ease;
+    transition:all 0.6s ease;
+}
+
+.user-name{
+    font-family:'Raleway',sans-serif;
+    color:#d66d95;
+    margin:0 20px;
+    font-weight:600;
+    text-transform:uppercase;
+}
+@keyframes slideIn{
+    from{
+        opacity:0;
+        transform:translateX(100px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+        footer{
+            text-align:center;
+            padding:30px;
+            margin-top:40px;
+            font-family:'Raleway',sans-serif;
+            color:#5a3d5c;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav>
+
+    <div class="logo">Pink Penny ✦</div>
+
+    <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/history">History</a>
+    <span class="user-name">
+        👤 {{ session['fullname'] }}
+    </span>
+    <a href="/contact">Contact Us</a>
+    <a href="/logout">Logout</a>
+
+</div>
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="heading">
+        <h1>Finance Analyzer</h1>
+        <p>Track your income, expenses and savings effortlessly.</p>
+    </div>
+<p style="
+text-align:center;
+font-family:'Raleway',sans-serif;
+margin-top:-15px;
+margin-bottom:25px;
+color:#d66d95;
+font-weight:600;
+">
+Welcome, {{ session['fullname'] }} 🌸
+</p>
+    <div class="form-card">
+
+        <form method="POST">
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Monthly Income</label>
+                    <input type="number" name="income" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Rent</label>
+                    <input type="number" name="rent" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Food</label>
+                    <input type="number" name="food" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Transport</label>
+                    <input type="number" name="transport" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Shopping</label>
+                    <input type="number" name="shopping" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Entertainment</label>
+                    <input type="number" name="entertainment" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Other Expenses</label>
+                    <input type="number" name="other" required>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn">
+                Analyze Finances
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if result %}
+    <div id="results-section">
+    <div class="results">
+
+        <div class="result-card">
+            <h3>Total Income</h3>
+            <p>₹{{ result.income }}</p>
+        </div>
+
+        <div class="result-card">
+            <h3>Total Expenses</h3>
+            <p>₹{{ result.expenses }}</p>
+        </div>
+
+        <div class="result-card">
+            <h3>Total Savings</h3>
+            <p>₹{{ result.savings }}</p>
+        </div>
+
+        <div class="result-card">
+            <h3>Savings Rate</h3>
+            <p>{{ result.rate }}%</p>
+        </div>
+
+    </div>
+    </div>
+    <div class="insight">
+
+        <h2>Financial Insight</h2>
+
+        <p>
+
+            {% if result.rate >= 30 %}
+                Excellent! You're saving a healthy portion of your income and maintaining strong financial habits. 🌸
+
+            {% elif result.rate >= 15 %}
+                Good job! Your finances are stable, but there is still room to increase your savings. ✨
+
+            {% else %}
+                Your expenses are taking up most of your income. Consider reviewing your spending categories and reducing non-essential purchases. 💡
+
+            {% endif %}
+
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+{% if result %}
+
+<div class="popup" id="popup">
+
+    {% if result.rate >= 40 %}
+        🌸 Outstanding! You're building serious wealth.
+    {% elif result.rate >= 25 %}
+        ✨ Great job! Your savings habits are impressive.
+    {% elif result.rate >= 15 %}
+        💖 Nice work! You're saving consistently.
+    {% else %}
+        💡 Try reducing non-essential spending.
+    {% endif %}
+
+</div>
+
+{% endif %}
+<footer>
+    🌷 Pink Penny | Personal Finance Analyzer 💖
+</footer>
+{% if result %}
+<script>
+
+window.onload = function() {
+
+    document.getElementById("results-section")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    setTimeout(function(){
+
+        const popup = document.getElementById("popup");
+
+        if(popup){
+
+            popup.style.opacity = "0";
+            popup.style.transform = "translateX(50px)";
+
+            setTimeout(function(){
+                popup.remove();
+            }, 600);
+
+        }
+
+    }, 4000);
+
+};
+
+</script>
+{% endif %}
+</body>
+</html>

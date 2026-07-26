@@ -1,4 +1,4 @@
-# PinkPenny---finance-analyzer
+# PinkPenny-FinanceAnalyzer
 Flask-based personal finance management web application designed to help users track their income, expenses, savings, and financial habits through a clean and intuitive interface.
 
 The application features secure user registration and login, finance analysis tools, personalized savings insights, and MySQL database integration for storing user and financial data. Users can enter monthly income and expense details, instantly view savings calculations and savings rates, and receive tailored financial feedback based on their spending patterns.
